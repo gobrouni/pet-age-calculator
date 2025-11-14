@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>   
+</head>
+<body>
+      <div class="container">
+    <div class="header">
+      <div class="emoji">🐶</div>
+      <h1>狗狗歲數計算機</h1>
+    </div>
+    
+    <div class="input-group">
+      <label for="birthdate">狗狗的出生日期：</label>
+      <input type="date" id="birthdate" max="">
+    </div>
+    
+    <button class="btn" onclick="calculateAge()">開始計算</button>
+    
+    <div class="result" id="result">
+      <div class="result-text">
+        🎉 狗狗現在大約
+        <div class="result-number" id="dogAge"></div>
+        歲狗年齡
+      </div>
+      <div class="result-text" style="margin-top: 15px;">
+        換算成人類年齡大約是
+        <div class="result-number" id="humanAge"></div>
+        歲
+      </div>
+    </div>
+    
+    <div class="info-box">
+      <strong>💡 計算公式：</strong><br>
+      人類年齡 = 16 × ln(狗年齡) + 31<br>
+      <small>此公式基於<a href="https://www.sciencedirect.com/science/article/pii/S2405471220302039" target="_blank" class="info-link">美國加州大學聖地牙哥分校的研究團隊</a></small>
+    </div>
+  </div>
+</body>
+</html>

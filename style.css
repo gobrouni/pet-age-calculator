@@ -1,0 +1,144 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: rgb(248, 160, 146);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .header .emoji {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    
+    .input-group {
+      margin-bottom: 25px;
+    }
+    
+    .input-group label {
+      display: block;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    
+    .input-group input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      background: rgb(184, 93, 77);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .result {
+      margin-top: 30px;
+      padding: 25px;
+      background: rgb(184, 93, 77);
+      border-radius: 16px;
+      text-align: center;
+      display: none;
+      animation: slideIn 0.5s ease;
+    }
+    
+    .result.show {
+      display: block;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .result-text {
+      color: white;
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    .result-number {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 5px 0;
+    }
+    
+    .info-box {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+.info-link{
+  text-decoration:none
+}
+.info-link:hover{
+   text-decoration:underline
+}
