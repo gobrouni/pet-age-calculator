@@ -36,13 +36,32 @@ body.cat-mode {
   background: #f0f0f0;
   padding: 6px;
   border-radius: 16px;
+  position: relative;  /* 新增 */
+}
+
+/* 新增滑動背景 */
+.toggle-slider {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(50% - 11px);
+  height: calc(100% - 12px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);  /* 關鍵效果 */
+}
+
+.toggle-slider.move-right {
+  transform: translateX(calc(100% + 10px));
 }
 
 .toggle-btn {
   flex: 1;
   padding: 12px 20px;
   border: none;
-  background: transparent;
+  background: transparent;  /* 改為透明 */
   border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
@@ -52,7 +71,9 @@ body.cat-mode {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;  /* 只保留顏色過渡 */
+  position: relative;  /* 新增 */
+  z-index: 2;  /* 新增，確保按鈕在滑塊上方 */
 }
 
 .toggle-emoji {
@@ -60,17 +81,13 @@ body.cat-mode {
 }
 
 .toggle-btn:hover {
-  background: rgba(0,0,0,0.05);
+  background: transparent;  /* 移除 hover 背景 */
 }
 
 .toggle-btn.active {
-  background: white;
+  background: transparent;  /* 改為透明 */
   color: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-body.cat-mode .toggle-btn.active[data-pet="cat"] {
-  background: white;
+  box-shadow: none;  /* 移除陰影 */
 }
 
 .header {

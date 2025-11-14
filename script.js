@@ -47,6 +47,14 @@ function switchPet(petType) {
   });
   document.querySelector(`[data-pet="${petType}"]`).classList.add('active');
   
+  // 控制滑塊位置 - 新增這段
+  const slider = document.querySelector('.toggle-slider');
+  if (petType === 'cat') {
+    slider.classList.add('move-right');
+  } else {
+    slider.classList.remove('move-right');
+  }
+  
   // 更新頁面內容
   if (petType === 'dog') {
     document.body.classList.remove('cat-mode');
