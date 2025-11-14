@@ -1,144 +1,367 @@
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: rgb(248, 160, 146);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    
-    .container {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      max-width: 500px;
-      width: 100%;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    .header h1 {
-      font-size: 32px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-    
-    .header .emoji {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-    
-    .input-group {
-      margin-bottom: 25px;
-    }
-    
-    .input-group label {
-      display: block;
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-    
-    .input-group input {
-      width: 100%;
-      padding: 15px;
-      font-size: 16px;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      transition: all 0.3s;
-    }
-    
-    .input-group input:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-    
-    .btn {
-      width: 100%;
-      padding: 16px;
-      font-size: 18px;
-      font-weight: 600;
-      color: white;
-      background: rgb(184, 93, 77);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    }
-    
-    .btn:active {
-      transform: translateY(0);
-    }
-    
-    .result {
-      margin-top: 30px;
-      padding: 25px;
-      background: rgb(184, 93, 77);
-      border-radius: 16px;
-      text-align: center;
-      display: none;
-      animation: slideIn 0.5s ease;
-    }
-    
-    .result.show {
-      display: block;
-    }
-    
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .result-text {
-      color: white;
-      font-size: 18px;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-    
-    .result-number {
-      font-size: 32px;
-      font-weight: 700;
-      margin: 5px 0;
-    }
-    
-    .info-box {
-      margin-top: 20px;
-      padding: 15px;
-      background: #f8f9fa;
-      border-radius: 12px;
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
-    }
-
-.info-link{
-  text-decoration:none
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.info-link:hover{
-   text-decoration:underline
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(248, 160, 146);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: background 0.5s ease;
+}
+
+body.cat-mode {
+  background: rgb(255, 199, 108);
+}
+
+.container {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  max-width: 500px;
+  width: 100%;
+}
+
+/* 切換按鈕 */
+.toggle-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  background: #f0f0f0;
+  padding: 6px;
+  border-radius: 16px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.toggle-emoji {
+  font-size: 20px;
+}
+
+.toggle-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.toggle-btn.active {
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body.cat-mode .toggle-btn.active[data-pet="cat"] {
+  background: white;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.header .emoji {
+  font-size: 48px;
+  margin-bottom: 10px;
+  /* animation: bounce 1s ease infinite; */
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+body.cat-mode .input-group input:focus {
+  border-color: #fed6e3;
+  box-shadow: 0 0 0 3px rgba(254, 214, 227, 0.3);
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: rgb(184, 93, 77);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+body.cat-mode .btn {
+  background: rgb(255, 176, 48);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.result {
+  margin-top: 30px;
+  padding: 25px;
+  background: rgb(184, 93, 77);
+  border-radius: 16px;
+  text-align: center;
+  display: none;
+  animation: slideIn 0.5s ease;
+}
+
+body.cat-mode .result {
+  background: rgb(255, 176, 48);
+}
+
+.result.show {
+  display: block;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.result-number {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+/* 生命階段 */
+.life-stage {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.stage-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+body.cat-mode .stage-badge {
+  background: rgba(255,255,255,0.95);
+  color: rgb(255, 176, 48);
+}
+
+body:not(.cat-mode) .stage-badge {
+  color: rgb(184, 93, 77);
+}
+
+.stage-description {
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 健康提醒 */
+.health-reminder {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+
+.reminder-title {
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.reminder-content {
+  color: white;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.reminder-content ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.reminder-content li {
+  margin: 5px 0;
+}
+
+.info-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.info-link {
+  text-decoration: none;
+  color: #667eea;
+}
+
+.info-link:hover {
+  text-decoration: underline;
+}
+
+/* RWD 響應式設計 */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 20px;
+  }
+  
+  .header h1 {
+    font-size: 26px;
+  }
+  
+  .header .emoji {
+    font-size: 40px;
+  }
+  
+  .toggle-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .toggle-emoji {
+    font-size: 18px;
+  }
+  
+  .input-group label {
+    font-size: 16px;
+  }
+  
+  .input-group input {
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  .result-text {
+    font-size: 16px;
+  }
+  
+  .result-number {
+    font-size: 28px;
+  }
+  
+  .stage-badge {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+  
+  .stage-description,
+  .reminder-content {
+    font-size: 13px;
+  }
+  
+  .info-box {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    padding: 15px;
+  }
+  
+  .container {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+  
+  .header h1 {
+    font-size: 22px;
+  }
+  
+  .toggle-buttons {
+    gap: 8px;
+  }
+  
+  .toggle-btn {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
 }

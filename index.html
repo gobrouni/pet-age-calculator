@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>狗狗貓貓年齡計算機</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>   
 </head>
 <body>
-      <div class="container">
+  <div class="container">
+    <!-- 切換按鈕 -->
+    <div class="toggle-buttons">
+      <button class="toggle-btn active" data-pet="dog" onclick="switchPet('dog')">
+        <span class="toggle-emoji">🐶</span>
+        <span>狗狗</span>
+      </button>
+      <button class="toggle-btn" data-pet="cat" onclick="switchPet('cat')">
+        <span class="toggle-emoji">🐱</span>
+        <span>貓貓</span>
+      </button>
+    </div>
+
     <div class="header">
-      <div class="emoji">🐶</div>
-      <h1>狗狗歲數計算機</h1>
+      <div class="emoji" id="petEmoji">🐶</div>
+      <h1 id="petTitle">狗狗歲數計算機</h1>
     </div>
     
     <div class="input-group">
-      <label for="birthdate">狗狗的出生日期：</label>
+      <label for="birthdate" id="petLabel">狗狗的出生日期：</label>
       <input type="date" id="birthdate" max="">
     </div>
     
@@ -23,21 +35,33 @@
     
     <div class="result" id="result">
       <div class="result-text">
-        🎉 狗狗現在大約
-        <div class="result-number" id="dogAge"></div>
-        歲狗年齡
+        🎉 <span id="petName">狗狗</span>現在大約
+        <div class="result-number" id="petAge"></div>
+        歲<span id="petAgeUnit">狗年齡</span>
       </div>
       <div class="result-text" style="margin-top: 15px;">
         換算成人類年齡大約是
         <div class="result-number" id="humanAge"></div>
         歲
       </div>
+      
+      <!-- 生命階段 -->
+      <div class="life-stage" id="lifeStage">
+        <div class="stage-badge" id="stageBadge"></div>
+        <div class="stage-description" id="stageDescription"></div>
+      </div>
+      
+      <!-- 健康提醒 -->
+      <div class="health-reminder" id="healthReminder">
+        <div class="reminder-title">💡 健康提醒</div>
+        <div class="reminder-content" id="reminderContent"></div>
+      </div>
     </div>
     
-    <div class="info-box">
+    <div class="info-box" id="infoBox">
       <strong>💡 計算公式：</strong><br>
-      人類年齡 = 16 × ln(狗年齡) + 31<br>
-      <small>此公式基於<a href="https://www.sciencedirect.com/science/article/pii/S2405471220302039" target="_blank" class="info-link">美國加州大學聖地牙哥分校的研究團隊</a></small>
+      <span id="formulaText">人類年齡 = 16 × ln(狗年齡) + 31</span><br>
+      <small id="formulaSource">此公式基於<a href="https://www.sciencedirect.com/science/article/pii/S2405471220302039" target="_blank" class="info-link">美國加州大學聖地牙哥分校的研究團隊</a></small>
     </div>
   </div>
 </body>
