@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; 
 }
 
 body {
@@ -61,7 +62,7 @@ body.cat-mode {
   flex: 1;
   padding: 12px 20px;
   border: none;
-  background: transparent;  /* 改為透明 */
+  background: transparent;  
   border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
@@ -72,8 +73,11 @@ body.cat-mode {
   justify-content: center;
   gap: 8px;
   transition: color 0.3s ease;  /* 只保留顏色過渡 */
-  position: relative;  /* 新增 */
-  z-index: 2;  /* 新增，確保按鈕在滑塊上方 */
+  position: relative; 
+  z-index: 2;  
+  -webkit-tap-highlight-color: transparent;  
+  -webkit-touch-callout: none;  /* 防止長按彈出選單 */
+  user-select: none;  /* 防止文字被選取 */
 }
 
 .toggle-emoji {
@@ -155,6 +159,9 @@ body.cat-mode .input-group input:focus {
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  -webkit-tap-highlight-color: transparent;  
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 body.cat-mode .btn {
@@ -187,6 +194,8 @@ body.cat-mode .result {
 .result.show {
   display: block;
 }
+
+
 
 @keyframes slideIn {
   from {
